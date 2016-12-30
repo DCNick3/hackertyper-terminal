@@ -1,6 +1,6 @@
 # Maintainer: Jonas Tranberg <jonastranberg93@gmail.com>
 pkgname=hackertyper-terminal
-pkgver=r4.b7f2157
+pkgver=r5.f1712e9
 pkgrel=1
 pkgdesc="A clone of the Hacker-Typer for the terminal"
 
@@ -17,7 +17,6 @@ pkgver() {
 }
 
 package() {
-  install -dm755 "$pkgdir/usr/share/hackertyper-terminal/"
-  cp -r "$srcdir/hackertyper-terminal/" "$pkgdir/usr/share/"
-  ln -s  "$pkgdir/usr/share/hackertyper-terminal/hackertyper.sh" "/bin/hackertyper"
+  install -dm755 "$pkgdir/opt/hackertyper-terminal/"
+  cp -r "$srcdir/hackertyper-terminal/" "$pkgdir/opt/"
 }
