@@ -1,24 +1,23 @@
 # Maintainer: Jonas Tranberg <jonastranberg93@gmail.com>
-pkgname=hackertyper-git
+pkgname=hackertyper-terminal-git
 pkgver=r21.cd5d4aa
 pkgrel=1
 pkgdesc="A clone of the Hacker-Typer for the terminal"
 
 arch=('any')
-url="https://github.com/naueramant/lightdm-webkit-sequoia"
+url="https://github.com/naueramant/hackertyper-terminal"
 license=('MIT')
-depends=('lightdm-webkit2-greeter')
 makedepends=('git')
-source=('git+https://github.com/naueramant/lightdm-webkit-sequoia.git')
+source=('git+https://github.com/naueramant/hackertyper-terminal.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/lightdm-webkit-sequoia/"
+  cd "$srcdir/hackertyper-terminal-git/"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  install -dm755 "$pkgdir/usr/share/lightdm-webkit/themes/sequoia"
-  cp -r "$srcdir/lightdm-webkit-sequoia/"* \
-    "$pkgdir/usr/share/lightdm-webkit/themes/sequoia/"
+  install -dm755 "$pkgdir/bin/share/hackertyper-terminal-git"
+  cp -r "$srcdir/hackertyper-terminal-git/*" "$pkgdir/usr/share/hackertyper-terminal-git/"
+  ln -s "/bin/hackertyper" "$pkgdir/usr/share/hackertyper-terminal-git/"
 }
