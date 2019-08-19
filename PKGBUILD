@@ -1,6 +1,5 @@
-# Maintainer: Jonas Tranberg <jonastranberg93@gmail.com>
 pkgname=hackertyper-terminal
-pkgver=r21.cd5d4aa
+pkgver=r7.4b172fa
 pkgrel=1
 pkgdesc="A clone of the Hacker-Typer for the terminal"
 
@@ -8,7 +7,7 @@ arch=('any')
 url="https://github.com/naueramant/hackertyper-terminal"
 license=('MIT')
 makedepends=('git')
-source=('git+https://github.com/naueramant/hackertyper-terminal.git')
+source=('git+https://github.com/hackertyper-terminal.git')
 md5sums=('SKIP')
 
 pkgver() {
@@ -17,7 +16,8 @@ pkgver() {
 }
 
 package() {
-  install -dm755 "$pkgdir/bin/share/hackertyper-terminal"
-  cp -r "$srcdir/hackertyper-terminal/*" "$pkgdir/usr/share/hackertyper-terminal/"
-  ln -s "/bin/hackertyper" "$pkgdir/usr/share/hackertyper-terminal/"
+  install -dm755 "$pkgdir/usr/share/hackertyper-terminal"
+  mkdir -p "$pkgdir/usr/share/hackertyper-terminal/" "$pkgdir/usr/bin"
+  cp -r "$srcdir/hackertyper-terminal/kernel.txt" "$srcdir/hackertyper-terminal/hackertyper.sh" "$pkgdir/usr/share/hackertyper-terminal/"
+  ln -s "/usr/share/hackertyper-terminal/hackertyper.sh" "$pkgdir/usr/bin/hackertyper"
 }
